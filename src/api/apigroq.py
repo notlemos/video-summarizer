@@ -1,7 +1,7 @@
 from groq import Groq
 from dotenv import load_dotenv
 import os
-from src.download import baixar_audio
+from download import baixar_audio
 load_dotenv()
 
 api_key = os.getenv('GROQAPIKEY')
