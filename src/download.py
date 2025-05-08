@@ -8,4 +8,4 @@ def baixar_audio(url):
     os.makedirs(output_path, exist_ok=True)
     audio_path = audio.download(output_path=output_path, filename=f"{yt.title}.mp4")
 
-    return f'{yt.title}.mp4'
+    return audio_path, f'{yt.title}.mp4'

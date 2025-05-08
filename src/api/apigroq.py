@@ -8,11 +8,11 @@ api_key = os.getenv('GROQAPIKEY')
 
 def transcription():
     url = input('')
-    title = baixar_audio(url) 
+    path, title = baixar_audio(url) 
     
     client = Groq(api_key=api_key)
     
-    filename = open(os.path.dirname(__file__) + f"/audios/{title}", "rb" )
+    filename = open(path, "rb" )
     transcript = client.audio.transcriptions.create(
         model="whisper-large-v3",
         file=filename
@@ -33,4 +33,5 @@ def transcription():
         ],
         model="llama-3.3-70b-versatile",
     )
+    os.remove(path)
     return completion.choices[0].message.content, title
